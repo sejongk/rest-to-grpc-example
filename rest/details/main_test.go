@@ -15,7 +15,7 @@ import (
 //refer to https://golang.cafe/blog/golang-httptest-example.html
 func TestGetMovieDetailHandler(t *testing.T) {
 	expectedDetail := MovieDetail{
-		ID:          0,
+		Id:          0,
 		Title:       "The Shawshank Redemption",
 		Genre:       "Drama",
 		ReleaseYear: 1994,
@@ -27,7 +27,7 @@ func TestGetMovieDetailHandler(t *testing.T) {
 	svr := httptest.NewServer(NewHandler())
 	defer svr.Close()
 
-	res, err := http.Get(svr.URL + "/details/" + strconv.Itoa(expectedDetail.ID))
+	res, err := http.Get(svr.URL + "/details/" + strconv.Itoa(expectedDetail.Id))
 	if err != nil {
 		t.Errorf("unable to complete Get request %v", err)
 	}
@@ -50,7 +50,7 @@ func TestGetMovieDetailHandler(t *testing.T) {
 
 func TestCreateMovieDetailHandler(t *testing.T) {
 	expectedDetail := MovieDetail{
-		ID:          0,
+		Id:          0,
 		Title:       "The Shawshank Redemption",
 		Genre:       "Drama",
 		ReleaseYear: 1994,

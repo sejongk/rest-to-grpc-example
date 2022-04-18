@@ -11,7 +11,7 @@ import (
 )
 
 type MovieDetail struct {
-	ID          int      `json:"id"`
+	Id          int      `json:"id"`
 	Title       string   `json:"title"`
 	Genre       string   `json:"genre"`
 	ReleaseYear int      `json:"releaseYear"`
@@ -25,7 +25,7 @@ var cache = map[int]MovieDetail{}
 func initCache() {
 	defaultMovieDetails := []MovieDetail{
 		{
-			ID:          0,
+			Id:          0,
 			Title:       "The Shawshank Redemption",
 			Genre:       "Drama",
 			ReleaseYear: 1994,
@@ -34,7 +34,7 @@ func initCache() {
 			Stars:       []string{"Tim Robbins", "Morgan Freeman", "Bob Gunton"},
 		},
 		{
-			ID:          1,
+			Id:          1,
 			Title:       "The Godfather",
 			Genre:       "Drama, Thriller",
 			ReleaseYear: 1972,
@@ -43,7 +43,7 @@ func initCache() {
 			Stars:       []string{"Marlon Brando", "Al Pacino", "James Caan"},
 		},
 		{
-			ID:          2,
+			Id:          2,
 			Title:       "The Dark Knight",
 			Genre:       "Action, Drama",
 			ReleaseYear: 2008,
@@ -54,7 +54,7 @@ func initCache() {
 	}
 
 	for _, detail := range defaultMovieDetails {
-		cache[detail.ID] = detail
+		cache[detail.Id] = detail
 	}
 }
 
@@ -95,7 +95,7 @@ func CreateMovieDetailHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	cache[movieDetail.ID] = movieDetail
+	cache[movieDetail.Id] = movieDetail
 
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
