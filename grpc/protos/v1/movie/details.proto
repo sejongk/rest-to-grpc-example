@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package v1.movie;
+
+option go_package = "github.com/sepaper/rest-to-grpc-example/protos/v1/movie";
+
+service MovieDetails {
+    rpc GetMovieDetail(GetMovieDetailRequest) returns (GetMovieDetailResponse);
+}
+
+message MovieDetail {
+    string id = 1;
+    string title = 2;
+    string genre = 3;
+    int32 releaseYear = 4;
+    int32 runningTime = 5;
+    string director = 6;
+    repeated string stars = 7;
+}
+
+message GetMovieDetailRequest {
+    string id = 1;
+}
+
+message GetMovieDetailResponse {
+    MovieDetail movieDetail = 1;
+}
+
